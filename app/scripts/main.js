@@ -98,13 +98,19 @@ $(function () {
 
   var generateTimeString = function(millis) {
     var date = new Date(millis);
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var hour = date.getHours();
+    var minutes = date.getMinutes();
+    var seconds = date.getSeconds();
     return [
-      date.getFullYear(),
-      date.getMonth() + 1,
-      date.getDate(),
-      date.getHours(),
-      date.getMinutes(),
-      date.getSeconds()
+      year,
+      month   < 10 ? '0' + month   : month,
+      day     < 10 ? '0' + day     : day,
+      hour    < 10 ? '0' + hour    : hour,
+      minutes < 10 ? '0' + minutes : minutes,
+      seconds < 10 ? '0' + seconds : seconds
     ].join('-');
   }
 
