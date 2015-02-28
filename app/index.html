@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Echo History List</title>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href="bower_components/normalize.css/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="styles/style.css" type="text/css" />
+  </head>
+  <body>
+    <div class="container">
+      <a class="btn" href="https://pitangui.amazon.com/api/activities?startTime=&size=50&offset=1" target="_blank">Get Data</a>
+      <div>
+        <textarea id="text_area" rows="4" cols="50" placeholder="and paste here..."></textarea>
+      </div>
+
+      <ol id="data_list"></ol>
+    </div>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

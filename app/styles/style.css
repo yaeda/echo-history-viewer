@@ -1,0 +1,71 @@
+.container {
+  padding: 15px;
+}
+
+#data_list {
+  padding: 0;
+  list-style: none;
+}
+
+#data_list li {
+  position: relative;
+  padding: .5rem;
+  height: 30px;
+}
+
+
+#data_list li > .activity-number,
+#data_list li > .activity-status,
+#data_list li > .activity-time,
+#data_list li > .activity-summary {
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  line-height: 30px;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#data_list li > .activity-number {
+  width: 30px;
+}
+
+#data_list li > .activity-status {
+  width: 100px;
+}
+
+#data_list li > .activity-time {
+  width: 170px;
+}
+
+#data_list li > .activity-summary {
+  position: absolute;
+  width: 100%;
+  padding-left: 300px;
+  padding-right: 320px;
+  text-align: left;
+}
+
+#data_list li > .activity-audio {
+  width: 300px;
+  float: right;
+}
+
+#data_list li > .status-success {
+  color: #5cb85c;
+}
+
+#data_list li > .status-invalid {
+  color: #d9534f;
+}
+
+#data_list li audio {
+  width: 300px;
+  height: 30px;
+}
+
+#data_list li:nth-child(2n) {
+  background: #ddd;
+}
