@@ -23,7 +23,9 @@ $(function () {
     if (dataString !== text) {
       dataString = text;
       var dataList = parseData();
-      showData(dataList);
+      if (dataList.length > 0) {
+        showData(dataList);
+      }
     }
   });
 
@@ -31,7 +33,7 @@ $(function () {
   // [{
   //    status: <String>,
   //    summary: <String>,
-  //    time: <String>,
+  //    time: <Number>,
   //    streamId: <String>,
   //    utteranceId: <String>
   // }, ...]
@@ -41,7 +43,7 @@ $(function () {
     try {
       dataObj = JSON.parse(dataString);
     } catch (err) {
-      return;
+      return [];
     }
 
     var result = [];
@@ -56,9 +58,6 @@ $(function () {
       var streamId = description.firstStreamId;
       var utteranceId = description.firstUtteranceId;
 
-      console.log(activity);
-      console.log(description);
-
       result.push({
         status: status,
         time: time,
@@ -71,7 +70,6 @@ $(function () {
     return result;
   };
 
-  'https://pitangui.amazon.com/api/utterance/audio/data?id=AB72C64C86AW2:1.0/2015/02/27/23/B0F00712447400GD/58:55::TNIH_2V.8da1a801-b01b-4431-b480-f8b32657780dZXV'
   var showData = function (dataList) {
     $dataList = $('#data_list').empty();
     for (var i = 0, l = dataList.length; i < l; i++) {
