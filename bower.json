@@ -1,5 +1,5 @@
 {
-  "name": "echo-history-list",
+  "name": "echo-history-viewer",
   "dependencies": {
     "jquery": "~2.1.3",
     "normalize.css": "~3.0.2",

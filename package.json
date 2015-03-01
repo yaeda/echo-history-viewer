@@ -1,5 +1,5 @@
 {
-  "name": "echo-history-list",
+  "name": "echo-history-viewer",
   "version": "0.1.0",
   "devDependencies": {
     "browser-sync": "^2.0.0-rc3",
