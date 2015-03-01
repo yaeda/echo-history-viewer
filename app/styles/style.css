@@ -19,6 +19,7 @@
 #data_list li > .activity-summary,
 #data_list li > .activity-download {
   display: block;
+  position: relative;
   box-sizing: border-box;
   float: left;
   line-height: 30px;

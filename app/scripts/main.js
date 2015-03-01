@@ -3,10 +3,10 @@ $(function () {
 
   var domTemplate = [
     '<li>',
+    '  <span class="activity-summary">%s</span>',
     '  <span class="activity-number">%s</span>',
     '  <span class="activity-status">%s</span>',
     '  <span class="activity-time">%s</span>',
-    '  <span class="activity-summary">%s</span>',
     '  <span class="activity-download"><a href="%s" download="%s"><i class="fa fa-download"></i></a></span>',
     '  <span class="activity-audio">',
     '   <audio controls>',
@@ -75,11 +75,11 @@ $(function () {
     for (var i = 0, l = dataList.length; i < l; i++) {
       var data = dataList[i];
       var domstr = domTemplate;
+      domstr = domstr.replace('%s', data.summary);
       domstr = domstr.replace('%s', i);
       domstr = domstr.replace('%s', data.status);
       var timeStr = generateTimeString(data.time);
       domstr = domstr.replace('%s', timeStr);
-      domstr = domstr.replace('%s', data.summary);
       var url = urlTemplate.replace('%s', data.streamId);
       var downloadName = timeStr;// + '_' + data.summary.replaceAll(' ', '-');
       domstr = domstr.replace('%s', url);
