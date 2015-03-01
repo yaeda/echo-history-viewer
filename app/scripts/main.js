@@ -7,7 +7,7 @@ $(function () {
     '  <span class="activity-status">%s</span>',
     '  <span class="activity-time">%s</span>',
     '  <span class="activity-summary">%s</span>',
-    //'  <span class="activity-audio"><a href="%s" target="_blank">%s</a></span>',
+    '  <span class="activity-download"><a href="%s" download="%s"><i class="fa fa-download"></i></a></span>',
     '  <span class="activity-audio">',
     '   <audio controls>',
     '    <source src="%s" type="audio/wav"/>',
@@ -16,7 +16,6 @@ $(function () {
     '</li>'
   ].join('');
 
-  //var urlTemplate = 'https://pitangui.amazon.com/api/utterance/audio/data?id=AB72C64C86AW2:1.0/2015/02/27/23/B0F00712447400GD/58:55::TNIH_2V.8da1a801-b01b-4431-b480-f8b32657780dZXV'
   var urlTemplate = 'https://pitangui.amazon.com/api/utterance/audio/data?id=%s';
 
   $textArea = $('#text_area').on('keyup', function () {
@@ -84,8 +83,10 @@ $(function () {
       domstr = domstr.replace('%s', timeStr);
       domstr = domstr.replace('%s', data.summary);
       var url = urlTemplate.replace('%s', data.streamId);
+      var downloadName = timeStr;// + '_' + data.summary.replaceAll(' ', '-');
       domstr = domstr.replace('%s', url);
-      //domstr = domstr.replace('%s', data.streamId);
+      domstr = domstr.replace('%s', downloadName);
+      domstr = domstr.replace('%s', url);
 
       $domstr = $(domstr);
       $domstr.find('.activity-status').addClass(

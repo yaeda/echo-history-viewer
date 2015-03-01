@@ -13,11 +13,11 @@
   height: 30px;
 }
 
-
 #data_list li > .activity-number,
 #data_list li > .activity-status,
 #data_list li > .activity-time,
-#data_list li > .activity-summary {
+#data_list li > .activity-summary,
+#data_list li > .activity-download {
   display: block;
   box-sizing: border-box;
   float: left;
@@ -44,7 +44,7 @@
   position: absolute;
   width: 100%;
   padding-left: 300px;
-  padding-right: 320px;
+  padding-right: 330px;
   text-align: left;
 }
 
@@ -52,6 +52,16 @@
   width: 300px;
   float: right;
 }
+
+#data_list li > .activity-download {
+  width: 30px;
+  float: right;
+}
+
+#data_list li > .activity-download > a {
+  color: black;
+}
+
 
 #data_list li > .status-success {
   color: #5cb85c;
