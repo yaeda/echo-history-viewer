@@ -5,6 +5,8 @@
 //# sourceMappingURL=jquery.min.map
 $(function () {
   var dataString = null;
+  var dataList = [];
+  var selectedIndex = 0; // 0: STREAM, 1: UTTERANCE
 
   var domTemplate = [
     '<li>',
@@ -23,15 +25,19 @@ $(function () {
 
   var urlTemplate = 'https://pitangui.amazon.com/api/utterance/audio/data?id=%s';
 
+  // Event Handling
   $textArea = $('#text_area').on('keyup', function () {
     var text = $textArea.val();
     if (dataString !== text) {
       dataString = text;
-      var dataList = parseData();
-      if (dataList.length > 0) {
-        showData(dataList);
-      }
+      dataList = parseData();
+      showData();
     }
+  });
+
+  $typeSelection = $('#type_selection').on('change', function (e) {
+    selectedIndex = e.currentTarget.selectedIndex;
+    showData();
   });
 
   //
@@ -75,7 +81,11 @@ $(function () {
     return result;
   };
 
-  var showData = function (dataList) {
+  var showData = function () {
+    if (dataList.length === 0) {
+      return;
+    }
+
     $dataList = $('#data_list').empty();
     for (var i = 0, l = dataList.length; i < l; i++) {
       var data = dataList[i];
@@ -85,11 +95,20 @@ $(function () {
       domstr = domstr.replace('%s', data.status);
       var timeStr = generateTimeString(data.time);
       domstr = domstr.replace('%s', timeStr);
-      var url = urlTemplate.replace('%s', data.streamId);
+
+      var audioSourceUrl = urlTemplate.replace('%s', data.streamId);
+      switch (selectedIndex) {
+        case 0: // STREAM
+          audioSourceUrl = urlTemplate.replace('%s', data.streamId);
+          break;
+        case 1:
+          audioSourceUrl = urlTemplate.replace('%s', data.utteranceId);
+          break;
+      }
       var downloadName = timeStr;// + '_' + data.summary.replaceAll(' ', '-');
-      domstr = domstr.replace('%s', url);
+      domstr = domstr.replace('%s', audioSourceUrl);
       domstr = domstr.replace('%s', downloadName);
-      domstr = domstr.replace('%s', url);
+      domstr = domstr.replace('%s', audioSourceUrl);
 
       $domstr = $(domstr);
       $domstr.find('.activity-status').addClass(
