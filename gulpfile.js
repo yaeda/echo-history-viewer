@@ -2,8 +2,14 @@ var gulp        = require('gulp');
 var browserSync = require('browser-sync');
 var useref      = require('gulp-useref');
 var deploy      = require('gulp-gh-pages');
+var del         = require('del');
 
-gulp.task('build', function () {
+gulp.task('font', function () {
+  return gulp.src('app/bower_components/fontawesome/fonts/*')
+    .pipe(gulp.dest('dist/fonts'));
+});
+
+gulp.task('build', ['clean', 'font'], function () {
   var assets = useref.assets();
 
   return gulp.src('app/*.html')
@@ -11,14 +17,18 @@ gulp.task('build', function () {
     .pipe(assets.restore())
     .pipe(useref())
     .pipe(gulp.dest('dist'));
-})
+});
+
+gulp.task('clean', function (cb) {
+  del('dist/**/*', cb);
+});
 
 gulp.task('deploy', ['build'], function () {
   return gulp.src('dist/**/*')
     .pipe(deploy());
 });
 
-gulp.task('browser-sync', function () {
+gulp.task('serve', function () {
   browserSync({
     server: {
       baseDir: './app'
@@ -26,7 +36,15 @@ gulp.task('browser-sync', function () {
   });
 });
 
-gulp.task('default', ['browser-sync'], function () {
+gulp.task('serve:dist', ['build'], function () {
+  browserSync({
+    server: {
+      baseDir: './dist'
+    }
+  });
+});
+
+gulp.task('default', ['serve'], function () {
   var reload = browserSync.reload;
   gulp.watch('app/scripts/**/*.js', reload);
   gulp.watch('app/styles/**/*.css', reload);
