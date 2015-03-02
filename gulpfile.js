@@ -1,7 +1,7 @@
 var gulp        = require('gulp');
 var browserSync = require('browser-sync');
 var useref      = require('gulp-useref');
-var deploy      = require('gulp-gh-pages');
+var shell       = require('gulp-shell');
 var del         = require('del');
 
 gulp.task('font', function () {
@@ -23,10 +23,9 @@ gulp.task('clean', function (cb) {
   del('dist/**/*', cb);
 });
 
-gulp.task('deploy', ['build'], function () {
-  return gulp.src('dist/**/*')
-    .pipe(deploy());
-});
+gulp.task('deploy', shell.task([
+  'git subtree push --prefix dist origin gh-pages'
+]));
 
 gulp.task('serve', function () {
   browserSync({

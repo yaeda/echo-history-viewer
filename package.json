@@ -5,7 +5,7 @@
     "browser-sync": "^2.0.0-rc3",
     "del": "^1.1.1",
     "gulp": "^3.8.10",
-    "gulp-gh-pages": "^0.4.0",
+    "gulp-shell": "^0.3.0",
     "gulp-useref": "^1.1.1"
   }
 }
