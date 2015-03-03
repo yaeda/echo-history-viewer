@@ -2,26 +2,42 @@
   padding: 15px;
 }
 
+.list-title {
+  height: 30px;
+  font-weight: bold;
+  border-bottom: 1px solid gray;
+}
+
 #data_list {
   padding: 0;
+  margin: 0;
   list-style: none;
 }
 
+.list-title,
 #data_list li {
   position: relative;
   padding: .5rem;
   height: 30px;
 }
 
+.list-title > .activity-number,
+.list-title > .activity-status,
+.list-title > .activity-time,
+.list-title > .activity-summary,
+.list-title > .activity-audio,
+.list-title > .activity-download,
 #data_list li > .activity-number,
 #data_list li > .activity-status,
 #data_list li > .activity-time,
 #data_list li > .activity-summary,
+#data_list li > .activity-audio,
 #data_list li > .activity-download {
   display: block;
   position: relative;
   box-sizing: border-box;
   float: left;
+  min-height: 1px;
   line-height: 30px;
   text-align: center;
   overflow: hidden;
@@ -29,18 +45,22 @@
   text-overflow: ellipsis;
 }
 
+.list-title > .activity-number,
 #data_list li > .activity-number {
   width: 30px;
 }
 
+.list-title > .activity-status,
 #data_list li > .activity-status {
   width: 100px;
 }
 
+.list-title > .activity-time,
 #data_list li > .activity-time {
   width: 170px;
 }
 
+.list-title > .activity-summary,
 #data_list li > .activity-summary {
   position: absolute;
   width: 100%;
@@ -49,11 +69,18 @@
   text-align: left;
 }
 
+.list-title > .activity-summary {
+  text-align: center;
+}
+
+.list-title > .activity-audio,
 #data_list li > .activity-audio {
   width: 300px;
   float: right;
+  text-align: center;
 }
 
+.list-title > .activity-download,
 #data_list li > .activity-download {
   width: 30px;
   float: right;

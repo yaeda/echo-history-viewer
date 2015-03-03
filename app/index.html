@@ -15,10 +15,20 @@
       <div>
         <textarea id="text_area" rows="4" cols="50" placeholder="and paste here..."></textarea>
       </div>
-      <select id="type_selection">
-        <option>STREAM</option>
-        <option>UTTERANCE</option>
-      </select>
+
+      <div class="list-title">
+        <span class="activity-summary">Summary</span>
+        <span class="activity-number">#</span>
+        <span class="activity-status">Status</span>
+        <span class="activity-time">Time</span>
+        <span class="activity-download"></span>
+        <span class="activity-audio">
+          <select class="type-selection">
+            <option>STREAM</option>
+            <option>UTTERANCE</option>
+          </select>
+        </span>
+      </div>
 
       <ol id="data_list"></ol>
     </div>

@@ -30,7 +30,7 @@ $(function () {
     }
   });
 
-  $typeSelection = $('#type_selection').on('change', function (e) {
+  $typeSelection = $('.type-selection').on('change', function (e) {
     selectedIndex = e.currentTarget.selectedIndex;
     showData();
   });
