@@ -1,5 +1,12 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
 .container {
   padding: 15px;
+  flex: 1;
 }
 
 .list-title {
