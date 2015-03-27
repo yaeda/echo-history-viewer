@@ -4,6 +4,12 @@ body {
   flex-direction: column;
 }
 
+footer {
+  padding: 10px 20px;
+  background-color: #F9F9F9;
+  border-top: 1px solid #DFDFDF;
+}
+
 .container {
   padding: 15px;
   flex: 1;
